@@ -3,7 +3,7 @@
 # variable "component_name" {}
 # variable "ports" {}
 
-variable "apps" {}
+#variable "apps" {}
 variable "database" {}
 variable "dns_domain" {}
 variable "env" {}

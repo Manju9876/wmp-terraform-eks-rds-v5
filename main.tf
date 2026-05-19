@@ -28,7 +28,7 @@ module "database" {
 
 module "eks" {
   depends_on = [module.database]
-  source = "./modules/wmp-v1"
+  source = "modules/eks"
 
   env     = var.env
   subnets = var.subnets

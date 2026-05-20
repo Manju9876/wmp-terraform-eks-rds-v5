@@ -71,7 +71,7 @@ resource "aws_eks_node_group" "main" {
   cluster_name    = aws_eks_cluster.main.name
   node_group_name = "node-group-1"
   node_role_arn   = aws_iam_role.node.arn
-  subnet_ids      = ["subnet-005ab3b734b47f3f7", "subnet-068ce337c8cfe6696"]
+  subnet_ids      = var.subnets
   instance_types = ["t3.small"]
 
   scaling_config {
@@ -81,6 +81,7 @@ resource "aws_eks_node_group" "main" {
   }
 
   depends_on = [
+    aws_eks_cluster.main,
     aws_iam_role_policy_attachment.main-AmazonEKSWorkerNodePolicy,
     aws_iam_role_policy_attachment.main-AmazonEKS_CNI_Policy,
     aws_iam_role_policy_attachment.main-AmazonEC2ContainerRegistryReadOnly,

@@ -91,7 +91,7 @@ resource "aws_eks_node_group" "main" {
 resource "null_resource" "kube_config" {
  depends_on = [aws_eks_node_group.main]
 
-  provisioner "remote-exec" {
+  provisioner "local-exec" {
     command = "aws eks update-kubeconfig --name ${aws_eks_cluster.main.name}"
   }
 }

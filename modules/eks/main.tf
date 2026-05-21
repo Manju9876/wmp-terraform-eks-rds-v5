@@ -87,3 +87,11 @@ resource "aws_eks_node_group" "main" {
     aws_iam_role_policy_attachment.main-AmazonEC2ContainerRegistryReadOnly,
   ]
 }
+
+resource "null_resource" "kube_config" {
+ depends_on = [aws_eks_node_group.main]
+
+  provisioner "remote-exec" {
+    command = "aws eks update-kubeconfig --name ${aws_eks_cluster.main.name}"
+  }
+}

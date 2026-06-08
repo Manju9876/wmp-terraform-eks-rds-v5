@@ -1,7 +1,7 @@
 dns_domain = "devopsbymanju.shop."
 env = "dev"
-subnets = ["subnet-005ab3b734b47f3f7","subnet-068ce337c8cfe6696"]
-vpc_id = "vpc-0808ea39b049a14b8"
+subnets = ["subnet-0a88a513542103904","subnet-058269c99acc7d807"]
+vpc_id = "vpc-09e9165f3b993bf91"
 
 # apps = {
 #   frontend = {

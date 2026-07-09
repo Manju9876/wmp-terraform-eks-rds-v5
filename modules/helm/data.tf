@@ -1,4 +1,4 @@
-data "kubernetes_service" "argocd" {
+data "kubernetes_service_v1" "argocd"
 
   metadata {
     name      = "argo-argocd-server"

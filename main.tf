@@ -16,8 +16,8 @@ module "eks" {
   subnets = var.subnets
 }
 
-module "helm" {
-  source = "./modules/helm"
-
-  env = var.env
-}
+# module "helm" {
+#   source = "./modules/helm"
+#
+#   env = var.env
+# }

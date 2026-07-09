@@ -17,20 +17,20 @@ resource "helm_release" "argocd" {
   ]
 }
 
-# resource "null_resource" "argocd_login" {
-#
-#   depends_on = [
-#     helm_release.argocd
-#   ]
-#
-#   provisioner "local-exec" {
-#
-#     command = <<EOF
-# argocd login ${data.kubernetes_service.argocd.status[0].load_balancer[0].ingress[0].hostname} \
-#   --username admin \
-#   --password $(kubectl get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d) \
-#   --insecure
-# EOF
-#
-#   }
-# }
+resource "null_resource" "argocd_login" {
+
+  depends_on = [
+    helm_release.argocd
+  ]
+
+  provisioner "local-exec" {
+
+    command = <<EOF
+argocd login ${data.kubernetes_service.argocd.status[0].load_balancer[0].ingress[0].hostname} \
+  --username admin \
+  --password $(kubectl get secret argocd-initial-admin-secret -o jsonpath='{.data.password}' | base64 -d) \
+  --insecure
+EOF
+
+  }
+}

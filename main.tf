@@ -8,12 +8,16 @@ module "database" {
   subnets           = var.subnets
 }
 
-
-
 module "eks" {
   depends_on = [module.database]
   source = "./modules/eks"
 
   env     = var.env
   subnets = var.subnets
+}
+
+module "helm" {
+  source = "./modules/helm"
+
+  env = var.env
 }

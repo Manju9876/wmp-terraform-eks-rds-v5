@@ -1,21 +1,40 @@
-# resource "null_resource" "kube_config" {
-#
-#   provisioner "local-exec" {
-#     command = "aws eks update-kubeconfig --name wmp-${var.env}"
-#   }
-# }
+resource "null_resource" "kube_config" {
+
+  provisioner "local-exec" {
+    command = "aws eks update-kubeconfig --name wmp-${var.env}"
+  }
+}
+
+provider "helm" {
+  kubernetes = {
+    config_path = "~/.kube/config"
+  }
+}
 
 resource "helm_release" "argocd" {
-
-  name       = "argo"
+  name       = "argocd"
   repository = "https://argoproj.github.io/argo-helm"
-  chart      = "argo-cd"
-  namespace  = "default"
+  chart      = "argocd"
 
-  values = [
-    file("${path.module}/argo.yml")
+  set = [
+    {
+      name  = "server.service.type"
+      value = "LoadBalancer"
+    }
   ]
 }
+
+# resource "helm_release" "argocd" {
+#
+#   name       = "argo"
+#   repository = "https://argoproj.github.io/argo-helm"
+#   chart      = "argo-cd"
+#   namespace  = "default"
+#
+#   values = [
+#     file("${path.module}/argo.yml")
+#   ]
+# }
 #
 # resource "null_resource" "argocd_login" {
 #

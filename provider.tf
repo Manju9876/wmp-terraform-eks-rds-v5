@@ -2,6 +2,12 @@
 provider "aws" {
   region = "us-east-1"
 }
+
+provider "helm" {
+  kubernetes = {
+    config_path = "~/.kube/config"
+  }
+}
 #
 # data "aws_eks_cluster" "eks" {
 #   name = module.eks.cluster_name

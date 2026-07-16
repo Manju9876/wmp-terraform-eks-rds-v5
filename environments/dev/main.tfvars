@@ -67,5 +67,3 @@ database = {
     allocated_storage = "10"
   }
 }
-
-

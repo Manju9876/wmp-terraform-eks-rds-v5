@@ -34,3 +34,17 @@ resource "helm_release" "argocd" {
     null_resource.kube-config
   ]
 }
+
+
+resource "helm_release" "kube_prometheus_stack" {
+  name             = "argocd"
+  repository       = "oci://ghcr.io/prometheus-community/charts/kube-prometheus-stack"
+  chart            = "kube-prometheus-stack"
+
+  namespace        = "prometheus"
+  create_namespace = true
+
+  depends_on = [
+    null_resource.kube-config
+  ]
+}

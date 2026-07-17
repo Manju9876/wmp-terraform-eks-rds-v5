@@ -37,7 +37,7 @@ resource "helm_release" "argocd" {
 
 
 resource "helm_release" "kube_prometheus_stack" {
-  name             = "argocd"
+  name             = "prometheus"
   repository       = "https://prometheus-community.github.io/helm-charts"
   chart            = "kube-prometheus-stack"
 

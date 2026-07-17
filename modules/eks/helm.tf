@@ -44,6 +44,11 @@ resource "helm_release" "kube_prometheus_stack" {
   namespace        = "prometheus"
   create_namespace = true
 
+  set {
+    name  = "prometheus.service.type"
+    value = "LoadBalancer"
+  }
+
   depends_on = [
     null_resource.kube-config
   ]

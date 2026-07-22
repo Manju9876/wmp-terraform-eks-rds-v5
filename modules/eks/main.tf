@@ -75,9 +75,9 @@ resource "aws_eks_node_group" "main" {
   instance_types = ["t3.small"]
 
   scaling_config {
-    desired_size = 3
-    max_size     = 3
-    min_size     = 3
+    desired_size = 4
+    max_size     = 4
+    min_size     = 4
   }
 
   depends_on = [

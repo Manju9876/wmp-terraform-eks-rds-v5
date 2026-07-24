@@ -53,3 +53,20 @@ resource "helm_release" "kube_prometheus_stack" {
     null_resource.kube-config
   ]
 }
+
+resource "helm_release" "file_beat" {
+  name             = "filebeat"
+  repository       = "https://helm.elastic.cos"
+  chart            = "filebeat"
+
+  namespace        = "filebeat"
+  create_namespace = true
+
+  values = [
+  file("${path.module}/filebeat.yml")
+  ]
+
+  depends_on = [
+    helm_release.kube_prometheus_stack
+  ]
+}

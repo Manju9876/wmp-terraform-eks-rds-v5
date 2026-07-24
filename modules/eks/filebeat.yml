@@ -1,0 +1,23 @@
+daemonset:
+  extraEnvs: []
+  secretMounts: []
+
+  filebeatConfig:
+    filebeat.yml: |
+      filebeat.inputs:
+      - type: container
+        paths:
+          - /var/log/containers/*
+        processors:
+        - add_kubernetes_metadata:
+            host: ${NODE_NAME}
+            matchers:
+            - logs_path:
+                logs_path: "/var/log/containers/"
+
+      output.elasticsearch:
+        hosts:
+          - "https://172.31.76.3:9200"
+        username: "elastic"
+        password: "przI7-IdiXpZARHZhDFA"
+        ssl.verification_mode: none

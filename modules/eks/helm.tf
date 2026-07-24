@@ -31,7 +31,7 @@ resource "helm_release" "argocd" {
   }
 
   depends_on = [
-    null_resource.kube-config
+    helm_release.kube_prometheus_stack
   ]
 }
 

@@ -15,9 +15,6 @@ daemonset:
             - logs_path:
                 logs_path: "/var/log/containers/"
 
-      output.elasticsearch:
-        hosts:
-          - "https://172.31.76.3:9200"
-        username: "elastic"
-        password: "przI7-IdiXpZARHZhDFA"
+      output.logstash:
+        hosts: '172.31.76.3:5044'
         ssl.verification_mode: none

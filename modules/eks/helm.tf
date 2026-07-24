@@ -56,7 +56,7 @@ resource "helm_release" "kube_prometheus_stack" {
 
 resource "helm_release" "file_beat" {
   name             = "filebeat"
-  repository       = "https://helm.elastic.cos"
+  repository       = "https://helm.elastic.co"
   chart            = "filebeat"
 
   namespace        = "filebeat"

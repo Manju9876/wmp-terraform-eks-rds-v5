@@ -34,24 +34,24 @@ resource "helm_release" "argocd" {
   ]
 }
 
-
-resource "helm_release" "kube_prometheus_stack" {
-  name             = "prometheus"
-  repository       = "https://prometheus-community.github.io/helm-charts"
-  chart            = "kube-prometheus-stack"
-
-  namespace        = "prometheus"
-  create_namespace = true
-
-  set {
-    name  = "prometheus.service.type"
-    value = "LoadBalancer"
-  }
-
-  depends_on = [
-    null_resource.kube-config
-  ]
-}
+#
+# resource "helm_release" "kube_prometheus_stack" {
+#   name             = "prometheus"
+#   repository       = "https://prometheus-community.github.io/helm-charts"
+#   chart            = "kube-prometheus-stack"
+#
+#   namespace        = "prometheus"
+#   create_namespace = true
+#
+#   set {
+#     name  = "prometheus.service.type"
+#     value = "LoadBalancer"
+#   }
+#
+#   depends_on = [
+#     null_resource.kube-config
+#   ]
+# }
 
 resource "helm_release" "file_beat" {
   name             = "filebeat"

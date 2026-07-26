@@ -16,5 +16,5 @@ daemonset:
                 logs_path: "/var/log/containers/"
 
       output.logstash:
-        hosts: '172.31.76.3:5044'
+        hosts: '172.31.30.170:5044'
         ssl.verification_mode: none

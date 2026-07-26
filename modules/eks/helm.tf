@@ -11,11 +11,11 @@ resource "null_resource" "kube-config" {
   }
 }
 
-provider "helm" {
-  kubernetes = {
-    config_path = "~/.kube/config"
-  }
-}
+# provider "helm" {
+#   kubernetes = {
+#     config_path = "~/.kube/config"
+#   }
+# }
 
 resource "helm_release" "argocd" {
   name             = "argocd"

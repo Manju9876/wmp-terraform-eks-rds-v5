@@ -1,13 +1,19 @@
+
 daemonset:
   extraEnvs: []
+
   secretMounts: []
+
+  extraVolumes: []
+
+  extraVolumeMounts: []
 
   filebeatConfig:
     filebeat.yml: |
       filebeat.inputs:
       - type: container
         paths:
-          - /var/log/containers/*
+          - /var/log/containers/*.log
         processors:
         - add_kubernetes_metadata:
             host: ${NODE_NAME}
@@ -16,6 +22,5 @@ daemonset:
                 logs_path: "/var/log/containers/"
 
       output.logstash:
-        hosts: '172.31.26.100:5044'
-        ssl.verification_mode: none
-
+        hosts:
+          - "172.31.26.100:5044"

@@ -22,4 +22,4 @@ daemonset:
 
       output.logstash:
         hosts:
-          - "172.31.26.100:5044"
+          - "172.31.29.83:5044"

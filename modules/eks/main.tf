@@ -2,7 +2,7 @@ resource "aws_eks_cluster" "main" {
   name = "wmp-${var.env}"
 
   role_arn = aws_iam_role.cluster.arn
-  version  = "1.30"
+  version  = "1.35"
 
   vpc_config {
     subnet_ids = var.subnets
